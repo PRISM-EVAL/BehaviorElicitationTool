@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=61.0", "setuptools_scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "behavior-elicitation-tool"
+dynamic = ["version"]
+description = "A tool for behavior elicitation using genetic algorithms and LLM-based evaluation"
+authors = [
+    { name = "Quentin Feuillade--Montixi" }
+]
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.12"
+dependencies = [
+    "Unidecode>=1.4.0",
+    "Levenshtein>=0.27.1",
+    "pyfiglet>=1.0.4",
+    "pyleetspeak>=0.1.0",
+    "scipy>=1.16.2",
+    "minillmlib==0.3.1",
+    "fastapi>=0.120.0",
+    "joblib>=1.5.2",
+    "google-cloud-translate>=3.22.0",
+    "pyphen>=0.17.2",
+    "ipykernel>=7.1.0",
+    "ipywidgets>=8.1.7",
+    "python-dotenv>=1.0.0",
+    "pymongo>=4.0.0",
+    "tqdm>=4.0.0",
+    "nest-asyncio>=1.6.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "isort>=5.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/yourusername/BehaviorEliciationTool"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.package-data]
+"*" = ["*.json"]
+
+[tool.setuptools_scm]
+version_scheme = "post-release"
+local_scheme = "no-local-version"

@@ -1,0 +1,8 @@
+__pycache__
+.env
+*.egg-info
+src/bet/Primitives/PrimitiveLibExtended.py
+src/bet/Factories/FactoryLibExtended.py
+src/bet/Factories/GlobalTransformFactoriesExtended.py
+src/bet/Factories/AddFactoriesExtended.py
+src/bet/Factories/WrapFactoriesExtended.py

@@ -1,0 +1,12 @@
+{
+    "required_kwargs": {
+        "texts": null,
+        "style": null
+    },
+    "prompts": [
+        {
+            "role": "user",
+            "content": "You are finding synonyms for a list of sensitive words.\n\nFor each [word] in the [word_list], you will generate a [synonym] using a specific style. When creating each [synonym], you need to preserve the original [word]'s characteristics:\n- Keep the same grammatical tense as the original [word]\n- Maintain any special formatting from the original [word] (like capitalization)\n- Find synonyms in the same language as the source [word] (the text might not be in English)\n\nProcess each [word] in the list exactly once, and return the synonyms in the same order as the input. Handle hyphenated words as single units (e.g., 'road-kill' stays together). If a [word] appears multiple times with different formatting, use the same [synonym] but match the formatting each time.\n\nHere is the [word_list] you need to process:\n```\n{texts}\n```\n\nThe style to use for synonyms: {style}\n\nYou will output your answer in this exact JSON format:\n```json\n{{ \"synonyms\": [ \"synonym of first word\", \"synonym of second word\", ... ] }}\n```\n\nIf the input list is empty, you will return: `{{ \"synonyms\": [ ] }}`\n\nNow you will answer in minified JSON format only, with no text before or after."
+        }
+    ]
+}

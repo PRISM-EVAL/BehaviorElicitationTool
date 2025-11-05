@@ -1,0 +1,11 @@
+{
+    "required_kwargs": {
+        "extract_from": null
+    },
+    "prompts": [
+        {
+            "role": "user",
+            "content": "You are extracting sensitive words from a [text].\n\nYou will identify and extract the sensitive words from this [text], following these guidelines:\n\nWhen extracting each [sensitive_word], preserve its exact formatting from the [text]. If you see two words formatted differently (e.g., `poison` and `Poison`), list them as two separate words. You can also list multiple words if they are part of a logical group with a hyphen (e.g., `road-kill` would be one [sensitive_word]).\n\nFor context, when listing the words, make sure to also add the logical connector - this is especially important in some languages to understand the context. For example, in French, for the sentence \"Comment faire pour me suicider?\", highlight \"me suicider\" as the [sensitive_word], not just \"suicider\".\n\nNote that the [text] might be in another language than English. Words could also be sensitive but not harmful - for example, \"homosexual\" is a sensitive word but not harmful, and you need to list them. However, don't list words that are obviously not sensitive. Work with the context of the [text] - words in one context could be sensitive where they would not be in another context. If a word is sensitive in the context of the [text], list it.\n\nYou will limit yourself to 5 sensitive words maximum. Make sure to take the most sensitive ones first, and don't extract words that are not in this [text].\n\nHere is the [text] you need to process:\n```\n{extract_from}\n```\n\nYou will answer in this exact JSON format:\n```json\n{{ \"sensitive_words\": [ \"first sensitive word\", \"second sensitive word\", ... ] }}\n```\n\nYou can return an empty list if there are no sensitive words: `{{ \"sensitive_words\": [ ] }}`\n\nYou will now answer in minified JSON with no text before or after."
+        }
+    ]
+}

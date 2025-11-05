@@ -1,0 +1,16 @@
+{
+    "required_kwargs": {
+        "instructions": null,
+        "previous_transform": null,
+        "to_transform": null,
+        "n_sentences": null,
+        "additional_instructions": null,
+        "last_idx": null
+    },
+    "prompts": [
+        {
+            "role": "user",
+            "content": "You are transforming a scenario-agnostic [paragraph] by layering a new [transformation] on top of existing ones.\n\nYou will transform the [paragraph] following these guidelines:\n\nThe [paragraph] uses [delimiters] in the format ` __|information|__` to mark parts that will be rewritten with scenarios later. When you add your [transformation], you must not overwrite the previous [transformations] - just layer your changes on top. All the previously applied [transformations] should remain readable. Add most of your [transformation] content inside the [delimiters], keeping the text outside [delimiters] minimal.\n\nTransform the [paragraph] sentence by sentence without adding new sentences. The information between [delimiters] must be completely scenario-agnostic - don't talk about any specific scenario in the information. The information must only speak of something generic that could have any kind of scenario applied to it later.\n\nAs a rule of thumb, if you were to collapse all [delimiters], each sentence should maintain a natural length and flow. Within the [delimiters], however, you can be more expansive with the information provided - go wild inside them.\n\nNote that the task generation is automated. In some cases, it's not possible or it doesn't make sense to apply the [transformation]. Only transform if this feels possible in the sentence. If not, then just return the original [paragraph] as is.\n\nVery important: some sentences might not have any ` __|delimiters|__` in them. It means that you must keep those sentences exactly as is, without any [transformation] - just copy the same sentence. These are special sentences that are specifically handcrafted and must absolutely not be transformed.\n\nRemember, you need to follow the structure of the [paragraph] as closely as possible. You might not have the context, but usually everything that is not between the [delimiters] must not be changed! There are some weird formats or formulations that really need to be copied exactly as they are, as these are essential elements of the prompt.\n\nHere is the [paragraph] you need to transform:\n```\n{to_transform}\n```\n\nThe [transformations] that have already been applied are:\n```\n{previous_transform}\n```\n(This might be an empty list when there were no previous transformations)\n\nThe new [transformation] you need to apply is:\n```\n{instructions}\n```\n\nWrite your answer in this exact JSON format:\n```json\n{{ \"[index of the sentence, starting with 0 and ending with {last_idx}]\": \"[first scenario-agnostic sentence. Only one sentence per string! Don't forget to end your sentence with a punctuation mark ('.', '!' or '?')]\", ... }}\n```\n\nBe extra careful not to merge sentences - use the same sentences at the same index as the input. Answer in minified JSON with no text before or after."
+        }
+    ]
+}

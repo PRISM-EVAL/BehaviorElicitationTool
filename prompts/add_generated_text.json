@@ -1,0 +1,15 @@
+{
+    "required_kwargs": {
+        "n_sentences": null,
+        "description": null,
+        "example": null,
+        "additional_instructions": null,
+        "last_idx": null
+    },
+    "prompts": [
+        {
+            "role": "user",
+            "content": "You are generating a scenario-agnostic [paragraph] that will later be transformed with specific scenarios. The [paragraph] will be exactly {n_sentences} sentences - no more, no less.\n\nYou'll use special [delimiters] in your [paragraph]. These [delimiters] look like ` __|information|__` and they mark parts of the text that will need to be rewritten later when we apply specific scenarios. The text between the [delimiters] (between ` __|` and `|__`) should give information on how to rewrite that part - for example, if you write ` __|the target action|__`, this tells us that when we apply a scenario later, we should replace this with the actual target action.\n\nThe information between [delimiters] must be completely scenario-agnostic - don't talk about any specific scenario in the information. The information must only speak of something generic that could have any kind of scenario applied to it later. Use these [delimiters] as often as possible - there should be at least one per [sentence].\n\nRemember that each [sentence] should flow naturally into the next, creating a coherent [paragraph]. Try to be as creative as possible - we're going to send similar instructions to other task workers and compile your answers, and we want diversity in the paragraphs.{additional_instructions}\n\nHere's the description of what the [paragraph] should contain:\n```\n{description}\n```\n\nAnd here's an [example] to give you an idea of what we're expecting (note that it might not be well formatted, or might not have the correct number of sentences - you can do better; this is just to show you the pattern, don't use the same one for your answer):\n```\n{example}\n```\n\nWrite your answer in this exact format:\n```\n{{ \"[index of the sentence, starting with 0 and ending with {last_idx}]\": \"[first scenario-agnostic sentence. Only one sentence per string! Don't forget to end your sentence with a punctuation mark ('.', '!' or '?')]\", ... }}\n```\n\nTake time to think and be extra careful that everything you're writing is explicitly part of the [paragraph] description above. Don't write anything that isn't in the description because it could break the process. Output only the JSON structure, and each sentence will flow naturally into the next, creating a coherent paragraph."
+        }
+    ]
+}
