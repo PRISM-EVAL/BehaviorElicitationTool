@@ -21,9 +21,7 @@ BET is a research tool designed to enable **rigorous, controlled experiments on 
 
 While initially developed for adversarial testing (jailbreaking), BET is a **general-purpose framework** for LLM behavioral science. The architecture supports any research objective that involves testing behaviors and measuring properties of model responses.
 
-This tool was developed in mid-2024 at PRISM-EVAL (https://prism-eval.com/) 
-and has powered our [Robustness Leaderboard](https://arxiv.org/html/2508.06296v1). 
-We open-sourced it because we believe this can be a valuable tool for the broader research community, with applications extending well beyond jailbreaking.
+This tool was developed in mid-2024 at PRISM-EVAL (https://prism-eval.com/) and has powered the [Robustness Leaderboard](https://arxiv.org/html/2508.06296v1).
 
 ### Why BET?
 
@@ -384,45 +382,6 @@ We welcome contributions! BET is designed to be extensible:
 
 ---
 
-## Roadmap
-
-### Current Status (v1.0)
-- ✅ Core primitive library
-- ✅ Genetic algorithm optimization
-- ✅ ProtoMetric and Heatmap
-- ✅ MongoDB caching
-- ✅ Parallel execution
-- ✅ Two-part Individual structure (instruction + request)
-
-### Planned (v1.1)
-- ⏳ **Generalized Individual**: Accept `List[PrimitiveLib]` for flexible structures
-  - Multi-turn conversations
-  - Scaffolding patterns
-  - Context priming
-
-### Future Directions
-
-- **Improved Effectiveness Prediction**: Develop more accurate interpolation methods to replace or augment RBF (e.g., neural network-based, XGBoost, etc.)
-
-- **Broader Behavioral Research**: Create primitive libraries for standard LLM interactions to systematically test:
-  - Sycophancy and agreement bias
-  - Hallucination tendencies
-  - Various forms of bias (demographic, political, etc.)
-  - Reasoning failures
-
-- **Closed-Loop Fine-tuning**: Integrate BET into an iterative training pipeline:
-  1. BET optimizes prompts to elicit target behaviors (jailbreaks, overrefusal, hallucinations)
-  2. Generated data is used for fine-tuning
-  3. Process repeats until metrics converge
-  4. Test generalization on held-out primitive sets
-
-  **Paired Training Strategy**: Use the same Individual (prompt structure) with paired scenarios:
-  - Harmful scenario (e.g., "how to make explosives") → train model to refuse
-  - Harmless scenario (e.g., "how to bake a cake") → train model to comply
-  
-  This approach could teach the model that refusal decisions should depend on the *request content*, not the *prompt structure* or persuasion techniques. This could reduce both jailbreak susceptibility and overrefusal.
-
----
 
 ## Citation
 
@@ -453,15 +412,5 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 ## Contact
 
-- **Maintainer**: Quentin Feuillade--Montixi ([@qfeuilla](https://github.com/qfeuilla))
 - **Issues**: [GitHub Issues](https://github.com/PRISM-EVAL/BehaviorEliciationTool/issues)
 
----
-
-## Philosophy
-
-> "LLMs are complex behavioral systems that require rigorous study with control over confounding variables to understand and improve. BET provides the laboratory infrastructure for this research at scale."
-
-BET treats LLMs as [**alien minds**](https://www.lesswrong.com/posts/suSpo6JQqikDYCskw/studying-the-alien-mind-1) - distinct from both stochastic parrots and human-like cognition. By combining the exploratory power of field studies with the rigor of controlled experiments, BET enables systematic exploration of LLM cognition at scale.
-
-**Not just a jailbreaking tool. A scientific framework for LLM behavioral research.**
